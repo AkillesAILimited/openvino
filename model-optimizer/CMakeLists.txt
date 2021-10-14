@@ -1,9 +1,10 @@
 # Copyright (C) 2018-2021 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
 
-if(NOT ENABLE_PYTHON)
-    message(WARNING "Please enable IE & nGraph Python API (ie_api and offline_transformations_api) targets to enable Model Optimizer target")
-else()
+#option(ENABLE_PYTHON ON)
+#if(NOT ENABLE_PYTHON)
+#    message(WARNING "Please enable IE & nGraph Python API (ie_api and offline_transformations_api) targets to enable Model Optimizer target")
+#else()
     add_custom_target(model_optimizer DEPENDS ie_api offline_transformations_api ir_ngraph_frontend)
     if(ENABLE_TESTS)
             add_subdirectory(unit_tests/mock_mo_frontend/mock_mo_ngraph_frontend)
@@ -12,7 +13,7 @@ else()
             add_subdirectory(unit_tests/mock_mo_frontend/mock_mo_python_api)
             add_dependencies(model_optimizer mock_mo_python_api)
     endif()
-endif()
+#endif()
 
 # install
 ie_cpack_add_component(model_optimizer)

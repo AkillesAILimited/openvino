@@ -6,6 +6,7 @@ cmake_minimum_required(VERSION 3.13)
 
 project(OpenVINO DESCRIPTION "OpenVINO toolkit")
 
+option(ENABLE_PYTHON ON)
 set(IE_MAIN_SOURCE_DIR ${OpenVINO_SOURCE_DIR}/inference-engine)
 
 find_package(IEDevScripts REQUIRED
